@@ -7,15 +7,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 public class ValController {
     @Autowired
     private UsersRepository usersRepository;
 
-    @PostMapping(value="/api/users/add", produces="application/json; charset=utf-8")
-    public UsersEntity apiPostUser(@RequestBody UsersEntity usersEntity){
-        usersRepository.save(usersEntity);
+    @PostMapping(value="/api/users/add")
+    public UsersEntity apiPostUser(@Valid @RequestBody UsersEntity usersEntity){
 
-        return usersEntity;
+        return this.usersRepository.save(usersEntity);
     }
 }
