@@ -1,22 +1,20 @@
 package com.iochord.controller;
 
-import com.iochord.entity.UsersEntity;
-import com.iochord.repository.UsersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.iochord.entity.Users;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+@Slf4j
 @RestController
 public class ValController {
-    @Autowired
-    private UsersRepository usersRepository;
 
     @PostMapping(value="/api/users/add")
-    public UsersEntity apiPostUser(@Valid @RequestBody UsersEntity usersEntity){
+    public Users apiPostUser(@Valid @RequestBody Users users){
 
-        return this.usersRepository.save(usersEntity);
+        return users;
     }
 }
