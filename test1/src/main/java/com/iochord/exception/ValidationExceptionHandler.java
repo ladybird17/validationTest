@@ -18,8 +18,6 @@ public class ValidationExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> customValidationErrorHandling(MethodArgumentNotValidException exception){
 
-        log.info("-------------"+exception.getFieldValue("userName"));
-
         List<Object> errorList = new ArrayList<>();
 
         for(int i =0; i<exception.getErrorCount(); i++){
