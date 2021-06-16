@@ -17,19 +17,12 @@ public class ValidationExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> customValidationErrorHandling(MethodArgumentNotValidException exception){
-        log.info("############"+exception.getBindingResult().getAllErrors());
-        log.info("@@@@@@@@"+exception.getAllErrors());
-        log.info("----------------"+exception.getTarget()); //입력했던 전체값
+
+        log.info("-------------"+exception.getFieldValue("userName"));
 
         List<Object> errorList = new ArrayList<>();
 
         for(int i =0; i<exception.getErrorCount(); i++){
-            log.info(i+"번째 메시지 : "+exception.getAllErrors().get(i).getDefaultMessage());
-            log.info("objectName : "+exception.getAllErrors().get(i).getObjectName());
-            log.info("code : "+exception.getAllErrors().get(i).getCode());
-            log.info("전문 : "+exception.getAllErrors().get(i));
-            log.info("codes : "+exception.getAllErrors().get(i).getCodes());
-
             errorList.add(exception.getAllErrors().get(i).getDefaultMessage());
         }
 

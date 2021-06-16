@@ -16,7 +16,7 @@ public class Users {
     @NotNull
     @NotBlank(message = "Blank Error of userEmail 이메일을 입력하세요")
     @Size(max=30, message = "Size Error of userEmail 이메일 도메인 포함 최대 30자 이하여야합니다")
-    @Email
+    @Email(message = "Pattern error of userEmail 이메일 형식을 올바르게 입력하세요")
     String userEmail;
 
     @NotNull
