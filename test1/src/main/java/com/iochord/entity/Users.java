@@ -15,13 +15,12 @@ public class Users {
 
     @NotNull
     @NotBlank(message = "Blank Error of userEmail 이메일을 입력하세요")
-    @Size(max=30, message = "Size Error of userEmail 이메일 도메인 포함 최대 30자 이하여야합니다")
-    @Email(message = "Pattern error of userEmail 이메일 형식을 올바르게 입력하세요")
+    @Email(message = "Pattern error of userEmail 이메일 형식을 올바르게 입력하거나, 도메인 제외한 길이가 100자이하여야 합니다")
     String userEmail;
 
     @NotNull
     @NotBlank(message = " Blank Error of userPhone 전화번호를 입력하세요")
-    @Pattern(regexp = "^01(?:[0-9])(\\d{3}|\\d{4})(\\d{4})$", message = "Pattern error of userPhone 전화번호는 숫자로만 입력하고, 10~11자여야 합니다.")
+    @Pattern(regexp = "^01(?:[0-9])(\\d{3}|\\d{4})(\\d{4})$", message = "Pattern error of userPhone 전화번호는 010~019로 시작하고, 총 10~11개 숫자여야 합니다.")
     String userPhone;
 
     @NotNull
